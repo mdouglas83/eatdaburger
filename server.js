@@ -3,8 +3,8 @@ var bodyParser = require("body-parser");
 var app = express();
 var port = process.env.PORT || 3000;
 
-/* URL- or JSON-encoded HTTP requests & responses... */
-// app.use(bodyParser.urlencoded({extended: false}));
+/* URL- and JSON-encoded HTTP requests & responses... */
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 /* Handlebars */
