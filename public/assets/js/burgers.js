@@ -1,8 +1,12 @@
 // Generic http request function, ignores response data
 function heyJax(method, url, data, callback) {
   const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) callback;
+  };
   xhr.open(method, url, true);
-  xhr.addEventListener('load', callback);
+  //replaced with .onreadystatechange, Heroku is crashing
+  //xhr.addEventListener('load', callback);
   xhr.setRequestHeader('Content-type', 'application/json');
   xhr.send(JSON.stringify(data));
 }
