@@ -2,13 +2,7 @@
 function heyJax(method, url, data, callback) {
   const xhr = new XMLHttpRequest();
   xhr.open(method, url, true);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      callback;
-    }
-  };
-  //replaced with .onreadystatechange, Heroku is crashing
-  //xhr.addEventListener('load', callback);
+  xhr.addEventListener('load', callback);
   xhr.setRequestHeader('Content-type', 'application/json');
   xhr.send(JSON.stringify(data));
 }
