@@ -1,6 +1,6 @@
 var mysql = require("mysql");
 
-const Z = 1; /* Server index */
+const Z = 0; /* Server index */
 
 cnxn = [
   {
