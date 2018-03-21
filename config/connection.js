@@ -2,7 +2,7 @@ var mysql = require("mysql");
 
 const Z = 1; /* Server index */
 
-cnxn = [
+const cnxn = [
   {
     port: 3306,
     host: "localhost",
