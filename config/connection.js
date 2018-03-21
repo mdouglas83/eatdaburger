@@ -15,16 +15,16 @@ const cnxn = [
     host: "ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     user: "s0sv82h9wmevzdzn",
     password: "uzks6dnbpib7iq4k",
-    database: "guarded-eyrie-86296"
+    database: "f4sjx8y4ug40m2k8"
   }
 ];
 
 var connection = mysql.createConnection(cnxn[Z]);
 connection.connect(function(err) {
   if (err) return console.error("error connecting: " + err.stack);
-  connection.query("CREATE DATABASE IF NOT EXISTS " + cnxn[Z].database + ";", function(err) {
-    if (err) return console.error("error: could not create burger_db");
-    connection.query("USE " + cnxn[Z].database + ";", function(err) {
+  connection.query("CREATE DATABASE IF NOT EXISTS " + cnxn[Z].database, function(err) {
+    if (err) return console.error("error: could not create " + cnxn[Z].database);
+    connection.query("USE " + cnxn[Z].database, function(err) {
       if (err) return console.error("error: could not switch to burger_db");
       console.log("connected to mysql://" + cnxn[Z].host + ":" + cnxn[Z].port + " (thread " + connection.threadId + ")");
       connection.query(
@@ -32,14 +32,14 @@ connection.connect(function(err) {
         "id int NOT NULL AUTO_INCREMENT, " +
         "burger varchar(255) NOT NULL, " +
         "eaten BOOLEAN DEFAULT false, " +
-        "PRIMARY KEY (id));", function(err) {
+        "PRIMARY KEY (id))", function(err) {
         if (err) return console.error("error: could not create table burgers");
-        connection.query("SELECT COUNT(*) FROM burgers;", function(err, result) {
+        connection.query("SELECT COUNT(*) FROM burgers", function(err, result) {
           if (err) return console.error("error: could not retrive record count from burgers");
           // TEMP TEMP TEMP
           console.log(result);
           if (result === 0) {
-            var sql = "INSERT INTO burgers (burger, eaten) VALUES ?;";
+            var sql = "INSERT INTO burgers (burger, eaten) VALUES ?";
             var values = [
               ['Big Mac', false],
               ['Quarter Pounter', false],
