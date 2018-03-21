@@ -7,15 +7,13 @@ const cnxn = [
     port: 3306,
     host: "localhost",
     user: "root",
-    password: "root",
-    database: "burger_db"
+    password: "root"
   }, 
   {
     port: 3306,
     host: "ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     user: "s0sv82h9wmevzdzn",
-    password: "uzks6dnbpib7iq4k",
-    database: "burger_db"
+    password: "uzks6dnbpib7iq4k"
   }
 ];
 
