@@ -34,11 +34,11 @@ connection.connect(function(err) {
         "eaten BOOLEAN DEFAULT false, " +
         "PRIMARY KEY (id))", function(err) {
         if (err) return console.error("error: could not create table burgers");
-        connection.query("SELECT COUNT(*) FROM burgers", function(err, result) {
+        connection.query("SELECT COUNT(*) AS Count FROM burgers", function(err, result) {
           if (err) return console.error("error: could not retrive record count from burgers");
           // TEMP TEMP TEMP
           console.log(result);
-          if (result === 0) {
+          if (result.Count === 0) {
             var sql = "INSERT INTO burgers (burger, eaten) VALUES ?";
             var values = [
               ['Big Mac', false],
