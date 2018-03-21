@@ -36,8 +36,6 @@ connection.connect(function(err) {
         if (err) return console.error("error: could not create table burgers");
         connection.query("SELECT COUNT(*) AS Count FROM burgers", function(err, result) {
           if (err) return console.error("error: could not retrive record count from burgers");
-          // TEMP TEMP TEMP
-          console.log(result, result[0].Count);
           if (result[0].Count === 0) {
             var sql = "INSERT INTO burgers (burger, eaten) VALUES ?";
             var values = [
@@ -48,7 +46,7 @@ connection.connect(function(err) {
             ];
             connection.query(sql, [values], function(err, result) {
               if (err) return console.error("error: could not insert records into burgers");
-              console.log("inserted " + result.affectedRows + " into burgers");
+              console.log("inserted " + result.affectedRows + " rows into burgers");
             });
           }
         });
