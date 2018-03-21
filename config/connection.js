@@ -37,7 +37,7 @@ connection.connect(function(err) {
         connection.query("SELECT COUNT(*) AS Count FROM burgers", function(err, result) {
           if (err) return console.error("error: could not retrive record count from burgers");
           // TEMP TEMP TEMP
-          console.log(result);
+          console.log(result, result.Count);
           if (result.Count === 0) {
             var sql = "INSERT INTO burgers (burger, eaten) VALUES ?";
             var values = [
