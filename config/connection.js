@@ -46,7 +46,7 @@ connection.connect(function(err) {
               ['Cajun Chicken Sandwich', false],
               ['Belly Burger', true]
             ];
-            connection.query(sql, values, function(err, result) {
+            connection.query(sql, [values], function(err, result) {
               if (err) return console.error("error: could not insert records into burgers");
               console.log("inserted " + result.affectedRows + " into burgers");
             });
