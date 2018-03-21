@@ -7,22 +7,24 @@ const cnxn = [
     port: 3306,
     host: "localhost",
     user: "root",
-    password: "root"
+    password: "root",
+    database: "burger_db"
   }, 
   {
     port: 3306,
     host: "ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     user: "s0sv82h9wmevzdzn",
-    password: "uzks6dnbpib7iq4k"
+    password: "uzks6dnbpib7iq4k",
+    database: "guarded-eyrie-86296"
   }
 ];
 
 var connection = mysql.createConnection(cnxn[Z]);
 connection.connect(function(err) {
   if (err) return console.error("error connecting: " + err.stack);
-  connection.query("CREATE DATABASE IF NOT EXISTS burger_db;", function(err) {
+  connection.query("CREATE DATABASE IF NOT EXISTS " + cnxn[Z].database + ";", function(err) {
     if (err) return console.error("error: could not create burger_db");
-    connection.query("USE burger_db;", function(err) {
+    connection.query("USE " + cnxn[Z].database + ";", function(err) {
       if (err) return console.error("error: could not switch to burger_db");
       console.log("connected to mysql://" + cnxn[Z].host + ":" + cnxn[Z].port + " (thread " + connection.threadId + ")");
       connection.query(
